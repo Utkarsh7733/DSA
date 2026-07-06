@@ -1,14 +1,15 @@
 class Solution {
-    public int longestOnes(int[] arr, int k) {
-        int n=arr.length,count=0;
-       for (int i = 0; i < n; i++) {
-              int flip = 0;
-         for (int j = i; j < n; j++) {
-                 if (arr[j] == 0) flip++;
-                 if (flip > k) break;
-                 count = Math.max(count, j - i + 1);
+    public int longestOnes(int[] nums, int k) {
+        int n = nums.length,i=0,j=0,size=0,zero=0;
+        while(j<n){
+            if(nums[j]==0) zero++;
+            while(zero>k){
+                if(nums[i]==0) zero--;
+                i++; 
             }
-       }
-        return count;
+            size=Math.max(size,j-i+1);
+            j++;
+        }
+        return size;
     }
 }
